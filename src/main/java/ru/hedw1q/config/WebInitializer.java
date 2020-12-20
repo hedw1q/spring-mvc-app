@@ -2,6 +2,7 @@ package ru.hedw1q.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+
 /**
  * @author hedw1q
  */
@@ -20,4 +21,5 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
+
 }

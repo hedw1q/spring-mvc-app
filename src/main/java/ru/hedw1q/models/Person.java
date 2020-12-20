@@ -1,7 +1,7 @@
 package ru.hedw1q.models;
 
+
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
 
@@ -9,11 +9,12 @@ import javax.validation.constraints.PositiveOrZero;
  * @author hedw1q
  */
 public class Person {
+
+
     public Person() {
-
     }
 
-    public Person(int id, int age, String name, String surname, String email) {
+    public Person(@PositiveOrZero int id, @PositiveOrZero(message = "Invalid age") int age, @NotEmpty(message = "Empty name") String name, @NotEmpty(message = "Empty surname") String surname, @Email(message = "Not a mail") String email) {
         this.id = id;
         this.age = age;
         this.name = name;
@@ -21,30 +22,18 @@ public class Person {
         this.email = email;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Person(int id, int age, String name, String surname) {
-        this.id = id;
-        this.age = age;
-        this.name = name;
-        this.surname = surname;
-    }
-
+    @PositiveOrZero
     private int id;
-    @PositiveOrZero(message = "Age is not positive")
+    @PositiveOrZero(message = "Invalid age")
     private int age;
-    @NotEmpty(message = "Empty name")
+   @NotEmpty(message = "Empty name")
     private String name;
-    @NotEmpty(message = "Empty surname")
+   @NotEmpty(message = "Empty surname")
     private String surname;
     @Email(message = "Not a mail")
     private String email;
+
 
 
     public int getId() {
@@ -77,6 +66,14 @@ public class Person {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

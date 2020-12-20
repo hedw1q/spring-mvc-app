@@ -2,7 +2,6 @@ package ru.hedw1q.dao;
 
 import org.springframework.stereotype.Component;
 import ru.hedw1q.models.Person;
-
 import java.util.ArrayList;
 import java.util.List;
 

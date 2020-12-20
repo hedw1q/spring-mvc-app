@@ -7,8 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.hedw1q.dao.PersonDAO;
 import ru.hedw1q.models.Person;
-
 import javax.validation.Valid;
+
 
 /**
  * @author hedw1q
@@ -54,7 +54,7 @@ public class PeopleController {
         return "people/edit";
 }
 @PostMapping("/edit/{id}")
-    public String updatePerson(@ModelAttribute("person") @Valid Person person,BindingResult bindingResult,
+    public String updatePerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult,
                                @PathVariable int id){
         if(bindingResult.hasErrors())
             return "people/edit";
@@ -64,6 +64,6 @@ public class PeopleController {
 @GetMapping("/delete/{id}")
     public String deletePerson(@PathVariable int id){
         personDAO.delete(id);
-        return "successDelete";
+        return "people/successDelete";
 }
 }
