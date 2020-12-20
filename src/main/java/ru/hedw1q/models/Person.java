@@ -1,21 +1,50 @@
 package ru.hedw1q.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
+
 /**
  * @author hedw1q
  */
 public class Person {
-    private int id;
-    private int age;
-private String name;
-private String surname;
+    public Person() {
 
-public Person (){
-
-}
-    public Person(int id, String name) {
-        this.id = id;
-        this.name = name;
     }
+
+    public Person(int id, int age, String name, String surname, String email) {
+        this.id = id;
+        this.age = age;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Person(int id, int age, String name, String surname) {
+        this.id = id;
+        this.age = age;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    private int id;
+    @PositiveOrZero(message = "Age is not positive")
+    private int age;
+    @NotEmpty(message = "Empty name")
+    private String name;
+    @NotEmpty(message = "Empty surname")
+    private String surname;
+    @Email(message = "Not a mail")
+    private String email;
 
 
     public int getId() {

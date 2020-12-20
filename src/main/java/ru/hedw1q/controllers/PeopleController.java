@@ -3,9 +3,12 @@ package ru.hedw1q.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.hedw1q.dao.PersonDAO;
 import ru.hedw1q.models.Person;
+
+import javax.validation.Valid;
 
 /**
  * @author hedw1q
@@ -38,7 +41,10 @@ public class PeopleController {
     }
 
     @PostMapping("/create")
-    public String createNewPerson(@ModelAttribute("person") Person person){
+    public String createNewPerson(@ModelAttribute("person") @Valid Person person,
+                                  BindingResult bindingResult){
+        if(bindingResult.hasErrors())
+            return "people/new";
         personDAO.create(person);
         return "people/successCreate";
     }
@@ -48,7 +54,10 @@ public class PeopleController {
         return "people/edit";
 }
 @PostMapping("/edit/{id}")
-    public String updatePerson(@ModelAttribute("person") Person person, @PathVariable int id){
+    public String updatePerson(@ModelAttribute("person") @Valid Person person,BindingResult bindingResult,
+                               @PathVariable int id){
+        if(bindingResult.hasErrors())
+            return "people/edit";
        personDAO.update(id, person);
        return "redirect:/people";
 }

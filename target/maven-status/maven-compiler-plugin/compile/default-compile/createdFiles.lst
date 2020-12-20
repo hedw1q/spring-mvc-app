@@ -1,6 +1,0 @@
-ru\hedw1q\config\WebInitializer.class
-ru\hedw1q\dao\PersonDAO.class
-ru\hedw1q\models\Person.class
-ru\hedw1q\config\SpringConfig.class
-ru\hedw1q\controllers\PeopleController.class
-ru\hedw1q\controllers\DefaultController.class
