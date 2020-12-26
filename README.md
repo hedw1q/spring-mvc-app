@@ -1,4 +1,5 @@
-Simple database management project with people for learning purposes. App without GUI
+Simple people management project without GUI for learning purposes.
+
 Technologies used:
    - Java 8
    - Spring MVC
