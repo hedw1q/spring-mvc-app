@@ -2,16 +2,55 @@
 <html lang="en" xmlns:th="thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+   <style>
+table {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+}
+th, td:first-child {
+background: #AFCDE7;
+color: white;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: white;
+}
+td {
+background: #D8E6F3;
+}
+th:first-child, td:first-child {
+text-align: left;
+}
+    </style>
     <title>All people</title>
 </head>
 <body>
-<div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">username</a>
-    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getSurname()}">usersurname</a>
-   <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getAge()}">usrage</a>
-    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getEmail()}">usermail</a>
-</div>
+<table class="people/table">
+    <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Age</td>
+        <td>Email</td>
+    </tr>
+<th:block th:each="person : ${people}">
+    <tr>
+        <td>
+            <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">username</a>
+        </td>
+        <td th:text="${person.getSurname()}">usersurname</td>
+        <td th:text="${person.getAge()}">userage</td>
+        <td th:text="${person.getEmail()}">useremail</td>
+    </tr>
+</th:block>
+</table>
+
 <br/>
-<a href="/people/new">Create new person</a>
+<form th:method="GET" th:action="@{/people/new}">
+    <input type="submit" value="Create new Person"/>
+</form>
 </body>
 </html>

@@ -9,7 +9,13 @@
 <p th:text="${person.getSurname()}">VALUE</p>
 <p th:text="${person.getAge()}">VALUE</p>
 <p th:text="${person.getEmail()}">VALUE</p>
-<a th:href="@{/people/edit/{id}(id=${person.getId()})}">Edit</a>
-<a th:href="@{/people/delete/{id}(id=${person.getId()})}">Delete</a>
+
+<form th:method="GET" th:action="@{/people/edit/{id}(id=${person.getId()})}">
+    <input type="submit" value="Edit"/>
+</form>
+</br>
+<form th:method="GET" th:action="@{/people/delete/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
 </body>
 </html>
